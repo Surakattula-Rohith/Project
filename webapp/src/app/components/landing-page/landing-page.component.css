@@ -1,0 +1,19 @@
+.header {
+    background-color: #333;
+    padding: 10px 0;
+}
+.header a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: inline-block;
+}
+.header a:hover {
+    background-color: #575757;
+}
+.nav {
+    text-align: center;
+}
+.active {
+    background-color: #4CAF50; /* Active link color */
+}
