@@ -1,19 +1,41 @@
-.header {
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar {
     background-color: #333;
-    padding: 10px 0;
-}
-.header a {
+    overflow: hidden;
+  }
+  
+  .navbar h1 {
+    float: left;
     color: white;
-    text-decoration: none;
     padding: 14px 20px;
-    display: inline-block;
-}
-.header a:hover {
-    background-color: #575757;
-}
-.nav {
+    margin: 0;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .navbar li {
+    float: left;
+  }
+  
+  .navbar li a {
+    display: block;
+    color: white;
     text-align: center;
-}
-.active {
-    background-color: #4CAF50; /* Active link color */
-}
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+  
+  .navbar li a:hover {
+    background-color: #111;
+  }
+  
