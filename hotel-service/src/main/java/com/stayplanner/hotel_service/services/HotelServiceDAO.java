@@ -1,6 +1,7 @@
 package com.stayplanner.hotel_service.services;
 
 import com.stayplanner.hotel_service.exception.HotelIdDoesNotExist;
+import com.stayplanner.hotel_service.exception.HotelNotFoundException;
 import com.stayplanner.hotel_service.model.Hotel;
 
 import java.util.List;
@@ -20,5 +21,8 @@ public interface HotelServiceDAO {
     List<Hotel> findBySingleRoomsGreaterThan(int number);
     List<Hotel> findByDoubleRoomsGreaterThan(int number);
     List<Hotel> findByTripleRoomsGreaterThan(int number);
+    Hotel reduceSingleRoomByOne(int hotelId) throws HotelNotFoundException;
+    Hotel reduceDoubleRoomByOne(int hotelId) throws HotelNotFoundException;
+    Hotel reduceTripleRoomByOne(int hotelId) throws HotelNotFoundException;
 }
 

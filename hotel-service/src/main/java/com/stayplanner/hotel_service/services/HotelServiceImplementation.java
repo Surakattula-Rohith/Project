@@ -1,6 +1,7 @@
 package com.stayplanner.hotel_service.services;
 
 import com.stayplanner.hotel_service.exception.HotelIdDoesNotExist;
+import com.stayplanner.hotel_service.exception.HotelNotFoundException;
 import com.stayplanner.hotel_service.model.Hotel;
 import com.stayplanner.hotel_service.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,6 +103,9 @@ public class HotelServiceImplementation implements HotelServiceDAO{
         return repo.findByTripleRoomsGreaterThan(number);
     }
 
+
+
+
     @Override
     public List<Hotel> findByWifiTrue() {
         return repo.findByWifiTrue();
@@ -110,6 +114,54 @@ public class HotelServiceImplementation implements HotelServiceDAO{
     @Override
     public List<Hotel> findByMaintainanceTrue() {
         return repo.findByMaintainanceTrue();
+    }
+
+    @Override
+    public Hotel reduceSingleRoomByOne(int hotelId) throws HotelNotFoundException {
+        Optional<Hotel> optionalHotel = repo.findById(hotelId);
+        if (optionalHotel.isPresent()) {
+            Hotel hotel = optionalHotel.get();
+            if (hotel.getSingleRooms() > 0) {
+                hotel.setSingleRooms(hotel.getSingleRooms() - 1);
+                return repo.save(hotel);
+            } else {
+                throw new IllegalArgumentException("No single rooms available to reduce");
+            }
+        } else {
+            throw new HotelNotFoundException("Hotel not found with id: " + hotelId);
+        }
+    }
+
+    @Override
+    public Hotel reduceDoubleRoomByOne(int hotelId) throws HotelNotFoundException {
+        Optional<Hotel> optionalHotel = repo.findById(hotelId);
+        if (optionalHotel.isPresent()) {
+            Hotel hotel = optionalHotel.get();
+            if (hotel.getDoubleRooms() > 0) {
+                hotel.setDoubleRooms(hotel.getDoubleRooms() - 1);
+                return repo.save(hotel);
+            } else {
+                throw new IllegalArgumentException("No double rooms available to reduce");
+            }
+        } else {
+            throw new HotelNotFoundException("Hotel not found with id: " + hotelId);
+        }
+    }
+
+    @Override
+    public Hotel reduceTripleRoomByOne(int hotelId) throws HotelNotFoundException {
+        Optional<Hotel> optionalHotel = repo.findById(hotelId);
+        if (optionalHotel.isPresent()) {
+            Hotel hotel = optionalHotel.get();
+            if (hotel.getTripleRooms() > 0) {
+                hotel.setTripleRooms(hotel.getTripleRooms() - 1);
+                return repo.save(hotel);
+            } else {
+                throw new IllegalArgumentException("No triple rooms available to reduce");
+            }
+        } else {
+            throw new HotelNotFoundException("Hotel not found with id: " + hotelId);
+        }
     }
 
 }

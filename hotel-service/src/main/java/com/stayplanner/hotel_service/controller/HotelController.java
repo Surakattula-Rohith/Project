@@ -1,6 +1,7 @@
 package com.stayplanner.hotel_service.controller;
 
 import com.stayplanner.hotel_service.exception.HotelIdDoesNotExist;
+import com.stayplanner.hotel_service.exception.HotelNotFoundException;
 import com.stayplanner.hotel_service.model.Hotel;
 import com.stayplanner.hotel_service.services.HotelServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +77,9 @@ public class HotelController {
         }
     }
 
+
+
+
     @GetMapping("owner/{ownerName}")
     public ResponseEntity<List<Hotel>> findByOwnerName(@PathVariable String ownerName) {
         List<Hotel> hotels = service.findByOwnerName(ownerName);
@@ -139,4 +143,39 @@ public class HotelController {
         return new ResponseEntity<>(hotels, HttpStatus.OK);
     }
 
+    @PatchMapping("reduceSingleRoom/{hotelId}")
+    public ResponseEntity<Hotel> reduceSingleRoomByOne(@PathVariable int hotelId) {
+        try {
+            Hotel updatedHotel = service.reduceSingleRoomByOne(hotelId);
+            return new ResponseEntity<>(updatedHotel, HttpStatus.OK);
+        } catch (HotelNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PatchMapping("reduceDoubleRoom/{hotelId}")
+    public ResponseEntity<Hotel> reduceDoubleRoomByOne(@PathVariable int hotelId) {
+        try {
+            Hotel updatedHotel = service.reduceDoubleRoomByOne(hotelId);
+            return new ResponseEntity<>(updatedHotel, HttpStatus.OK);
+        } catch (HotelNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PatchMapping("reduceTripleRoom/{hotelId}")
+    public ResponseEntity<Hotel> reduceTripleRoomByOne(@PathVariable int hotelId) {
+        try {
+            Hotel updatedHotel = service.reduceTripleRoomByOne(hotelId);
+            return new ResponseEntity<>(updatedHotel, HttpStatus.OK);
+        } catch (HotelNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 }

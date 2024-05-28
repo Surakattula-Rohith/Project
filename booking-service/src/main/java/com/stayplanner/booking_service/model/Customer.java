@@ -1,4 +1,4 @@
-package com.stayplanner.customer_service.model;
+package com.stayplanner.booking_service.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

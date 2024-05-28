@@ -1,4 +1,4 @@
-package com.stayplanner.customer_service.model;
+package com.stayplanner.booking_service.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,17 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity()
-public class Customer {
-
+public class Bookings {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int BookingsId ;
     private int customerId ;
-    private String firstName ;
-    private String lastName ;
-    private String email ;
-    private String gender ;
-    private String state;
-    private String city ;
-    private String address ;
-    private String description ;
+    private int HotelId ;
+    private String roomType;
 }
