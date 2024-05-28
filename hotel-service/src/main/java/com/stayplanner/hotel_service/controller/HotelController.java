@@ -27,7 +27,7 @@ public class HotelController {
         return new ResponseEntity<List>(service.viewAllHotels() , HttpStatus.OK) ;
     }
 
-    @PutMapping("/update/{hotelId}")
+    @PutMapping("update/{hotelId}")
     public ResponseEntity<?> updateHotel(@PathVariable int hotelId, @RequestBody Hotel hotel) {
         try {
             Hotel updatedHotel = service.updateHotel(hotelId, hotel);
@@ -36,7 +36,7 @@ public class HotelController {
             return new ResponseEntity<String>("Hotel not found with id: " + hotelId, HttpStatus.NOT_FOUND);
         }
     }
-    @DeleteMapping("/delete/{hotelId}")
+    @DeleteMapping("delete/{hotelId}")
     public ResponseEntity<?> deleteHotel(@PathVariable int hotelId) {
         try {
             service.deleteHotel(hotelId);
@@ -75,4 +75,68 @@ public class HotelController {
             return new ResponseEntity<List<Hotel>>(hotels, HttpStatus.OK);
         }
     }
+
+    @GetMapping("owner/{ownerName}")
+    public ResponseEntity<List<Hotel>> findByOwnerName(@PathVariable String ownerName) {
+        List<Hotel> hotels = service.findByOwnerName(ownerName);
+        if (hotels.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(hotels, HttpStatus.OK);
+    }
+
+    @GetMapping("acTrue")
+    public ResponseEntity<List<Hotel>> findByAcTrue() {
+        List<Hotel> hotels = service.findByAcTrue();
+        if (hotels.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(hotels, HttpStatus.OK);
+    }
+
+    @GetMapping("wifiTrue")
+    public ResponseEntity<List<Hotel>> findByWifiTrue() {
+        List<Hotel> hotels = service.findByWifiTrue();
+        if (hotels.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(hotels, HttpStatus.OK);
+    }
+
+    @GetMapping("maintenanceTrue")
+    public ResponseEntity<List<Hotel>> findByMaintainanceTrue() {
+        List<Hotel> hotels = service.findByMaintainanceTrue();
+        if (hotels.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(hotels, HttpStatus.OK);
+    }
+
+    @GetMapping("singleRooms")
+    public ResponseEntity<List<Hotel>> findBySingleRoomsGreaterThan(@RequestParam int number) {
+        List<Hotel> hotels = service.findBySingleRoomsGreaterThan(number);
+        if (hotels.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(hotels, HttpStatus.OK);
+    }
+
+    @GetMapping("doubleRooms")
+    public ResponseEntity<List<Hotel>> findByDoubleRoomsGreaterThan(@RequestParam int number) {
+        List<Hotel> hotels = service.findByDoubleRoomsGreaterThan(number);
+        if (hotels.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(hotels, HttpStatus.OK);
+    }
+
+    @GetMapping("tripleRooms")
+    public ResponseEntity<List<Hotel>> findByTripleRoomsGreaterThan(@RequestParam int number) {
+        List<Hotel> hotels = service.findByTripleRoomsGreaterThan(number);
+        if (hotels.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(hotels, HttpStatus.OK);
+    }
+
 }

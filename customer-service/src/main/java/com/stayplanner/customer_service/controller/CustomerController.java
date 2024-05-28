@@ -17,17 +17,17 @@ public class CustomerController {
     @Autowired
     CustomerServiceImplementation service;
 
-    @PostMapping("/addCustomer")
+    @PostMapping("addCustomer")
     public ResponseEntity<?> addCustomer(@RequestBody Customer customer) {
         return new ResponseEntity<Customer>(service.addCustomer(customer), HttpStatus.CREATED);
     }
 
-    @GetMapping("/viewAllCustomers")
+    @GetMapping("viewAllCustomers")
     public ResponseEntity<?> getAllCustomers() {
         return new ResponseEntity<List<Customer>>(service.viewAllCustomers(), HttpStatus.OK);
     }
 
-    @PutMapping("/updateCustomer/{customerId}")
+    @PutMapping("updateCustomer/{customerId}")
     public ResponseEntity<?> updateCustomer(@PathVariable int customerId, @RequestBody Customer customer) {
         try {
             Customer updatedCustomer = service.updateCustomer(customerId, customer);
@@ -37,7 +37,7 @@ public class CustomerController {
         }
     }
 
-    @DeleteMapping("/deleteCustomer/{customerId}")
+    @DeleteMapping("deleteCustomer/{customerId}")
     public ResponseEntity<?> deleteCustomer(@PathVariable int customerId) {
         try {
             service.deleteCustomer(customerId);

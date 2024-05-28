@@ -13,4 +13,11 @@ public interface HotelRepository extends JpaRepository<Hotel,Integer> {
     List<Hotel> findByState(String state);
 
     List<Hotel> findByCity(String city);
+    List<Hotel> findByOwnerName(String ownerName);
+    List<Hotel> findByAcTrue();
+    List<Hotel> findByWifiTrue();
+    List<Hotel> findByMaintainanceTrue();
+    List<Hotel> findBySingleRoomsGreaterThan(int number);
+    List<Hotel> findByDoubleRoomsGreaterThan(int number);
+    List<Hotel> findByTripleRoomsGreaterThan(int number);
 }

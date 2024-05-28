@@ -77,5 +77,39 @@ public class HotelServiceImplementation implements HotelServiceDAO{
         return repo.findByCity(city);
     }
 
+    @Override
+    public List<Hotel> findByOwnerName(String ownerName) {
+        return repo.findByOwnerName(ownerName);
+    }
+
+    @Override
+    public List<Hotel> findByAcTrue() {
+        return repo.findByAcTrue();
+    }
+
+    @Override
+    public List<Hotel> findBySingleRoomsGreaterThan(int number) {
+        return repo.findBySingleRoomsGreaterThan(number);
+    }
+
+    @Override
+    public List<Hotel> findByDoubleRoomsGreaterThan(int number) {
+        return repo.findByDoubleRoomsGreaterThan(number);
+    }
+
+    @Override
+    public List<Hotel> findByTripleRoomsGreaterThan(int number) {
+        return repo.findByTripleRoomsGreaterThan(number);
+    }
+
+    @Override
+    public List<Hotel> findByWifiTrue() {
+        return repo.findByWifiTrue();
+    }
+
+    @Override
+    public List<Hotel> findByMaintainanceTrue() {
+        return repo.findByMaintainanceTrue();
+    }
 
 }

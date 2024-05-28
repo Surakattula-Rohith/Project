@@ -13,5 +13,12 @@ public interface HotelServiceDAO {
     List<Hotel> findHotelsByStateAndCity(String state, String city);
     List<Hotel> findHotelsByState(String state);
     List<Hotel> findHotelsByCity(String city);
+    List<Hotel> findByOwnerName(String ownerName);
+    List<Hotel> findByAcTrue();
+    List<Hotel> findByWifiTrue();
+    List<Hotel> findByMaintainanceTrue();
+    List<Hotel> findBySingleRoomsGreaterThan(int number);
+    List<Hotel> findByDoubleRoomsGreaterThan(int number);
+    List<Hotel> findByTripleRoomsGreaterThan(int number);
 }
 
