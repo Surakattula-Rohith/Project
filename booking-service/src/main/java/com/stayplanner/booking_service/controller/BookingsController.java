@@ -1,5 +1,6 @@
 package com.stayplanner.booking_service.controller;
 
+import com.stayplanner.booking_service.exception.RoomsUnavailable;
 import com.stayplanner.booking_service.model.Bookings;
 import com.stayplanner.booking_service.services.BookingDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class BookingsController {
     private BookingDAO service;
 
     @PostMapping("addBooking")
-    public ResponseEntity<Bookings> addBooking(@RequestBody Bookings booking) {
+    public ResponseEntity<Bookings> addBooking(@RequestBody Bookings booking) throws RoomsUnavailable {
         return new ResponseEntity<>(service.addBooking(booking), HttpStatus.CREATED);
     }
 

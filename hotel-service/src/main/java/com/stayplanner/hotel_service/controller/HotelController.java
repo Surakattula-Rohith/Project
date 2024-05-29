@@ -143,7 +143,7 @@ public class HotelController {
         return new ResponseEntity<>(hotels, HttpStatus.OK);
     }
 
-    @PatchMapping("reduceSingleRoom/{hotelId}")
+    @PutMapping("reduceSingleRoom/{hotelId}")
     public ResponseEntity<Hotel> reduceSingleRoomByOne(@PathVariable int hotelId) {
         try {
             Hotel updatedHotel = service.reduceSingleRoomByOne(hotelId);
@@ -155,7 +155,7 @@ public class HotelController {
         }
     }
 
-    @PatchMapping("reduceDoubleRoom/{hotelId}")
+    @PutMapping("reduceDoubleRoom/{hotelId}")
     public ResponseEntity<Hotel> reduceDoubleRoomByOne(@PathVariable int hotelId) {
         try {
             Hotel updatedHotel = service.reduceDoubleRoomByOne(hotelId);
@@ -167,7 +167,7 @@ public class HotelController {
         }
     }
 
-    @PatchMapping("reduceTripleRoom/{hotelId}")
+    @PutMapping("reduceTripleRoom/{hotelId}")
     public ResponseEntity<Hotel> reduceTripleRoomByOne(@PathVariable int hotelId) {
         try {
             Hotel updatedHotel = service.reduceTripleRoomByOne(hotelId);
