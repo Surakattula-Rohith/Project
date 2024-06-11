@@ -164,4 +164,10 @@ public class HotelServiceImplementation implements HotelServiceDAO{
         }
     }
 
+    public Hotel toggleAdminAccess(int hotelId) throws HotelNotFoundException {
+        Hotel hotel = repo.findById(hotelId).orElseThrow(() -> new HotelNotFoundException("Hotel not found with id: " + hotelId));
+        hotel.setAdminAccess(!hotel.isAdminAccess());
+        return repo.save(hotel);
+    }
+
 }

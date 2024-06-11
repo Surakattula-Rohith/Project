@@ -1,10 +1,12 @@
-package com.stayplanner.hotel_service.model;
+package com.stayplanner.admin_service.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
@@ -27,6 +29,5 @@ public class Hotel {
     private int singleRooms;
     private int doubleRooms ;
     private int tripleRooms ;
-    private boolean adminAccess;
 
 }

@@ -178,4 +178,14 @@ public class HotelController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @PutMapping("toggleAdminAccess/{hotelId}")
+    public ResponseEntity<Hotel> toggleAdminAccess(@PathVariable int hotelId) {
+        try {
+            Hotel updatedHotel = service.toggleAdminAccess(hotelId);
+            return new ResponseEntity<>(updatedHotel, HttpStatus.OK);
+        } catch (HotelNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

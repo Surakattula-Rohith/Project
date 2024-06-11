@@ -23,6 +23,7 @@ public interface HotelServiceDAO {
     List<Hotel> findByTripleRoomsGreaterThan(int number);
     Hotel reduceSingleRoomByOne(int hotelId) throws HotelNotFoundException;
     Hotel reduceDoubleRoomByOne(int hotelId) throws HotelNotFoundException;
+    Hotel toggleAdminAccess(int hotelId) throws HotelNotFoundException ;
     Hotel reduceTripleRoomByOne(int hotelId) throws HotelNotFoundException;
 }
 
