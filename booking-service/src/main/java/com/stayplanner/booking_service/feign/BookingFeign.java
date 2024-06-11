@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 
-@FeignClient("hotel-service")
+@FeignClient(name = "hotel-service")
 public interface BookingFeign {
-    @PutMapping("reduceSingleRoom/{hotelId}")
+    @PutMapping("hotel/reduceSingleRoom/{hotelId}")
     public ResponseEntity<Hotel> reduceSingleRoomByOne(@PathVariable int hotelId) throws RoomsUnavailable;
 
-    @PutMapping("reduceDoubleRoom/{hotelId}")
+    @PutMapping("hotel/reduceDoubleRoom/{hotelId}")
     public ResponseEntity<Hotel> reduceDoubleRoomByOne(@PathVariable int hotelId) throws RoomsUnavailable;
 
-    @PutMapping("reduceTripleRoom/{hotelId}")
+    @PutMapping("hotel/reduceTripleRoom/{hotelId}")
     public ResponseEntity<Hotel> reduceTripleRoomByOne(@PathVariable int hotelId) throws RoomsUnavailable;
 }
