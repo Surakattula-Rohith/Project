@@ -16,4 +16,8 @@ public interface AdminDAO {
     Admin getAdminById(int adminId);
     Hotel toggleAdminAccess(int hotelId) throws HotelNotFoundException;
 
+    List<Hotel> findByOwnerName(String ownerName);
+    void deleteHotel(int hotelId) throws HotelNotFoundException;
+    List<Hotel> getAllHotels();
+
 }

@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("admin")
+@CrossOrigin("*")
 public class AdminController {
 
     @Autowired
@@ -63,12 +64,47 @@ public class AdminController {
         }
     }
 
+    @GetMapping("owner/{ownerName}")
+    public ResponseEntity<List<Hotel>> findByOwnerName(@PathVariable String ownerName) {
+        try {
+            List<Hotel> hotels = service.findByOwnerName(ownerName);
+            if (hotels == null || hotels.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<>(hotels, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
+    @DeleteMapping("delete/{hotelId}")
+    public ResponseEntity<?> deleteHotel(@PathVariable int hotelId) {
+        try {
+            service.deleteHotel(hotelId);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (HotelNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
+    @GetMapping("viewAllHotels")
+    public ResponseEntity<?> getAllHotels() {
+        try {
+            List<Hotel> hotels = service.getAllHotels();
+            return new ResponseEntity<>(hotels, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @DeleteMapping("deleteAdminById/{adminId}")
     public ResponseEntity<String> deleteAdmin(@PathVariable int adminId) {
         service.deleteAdmin(adminId);
         return new ResponseEntity<>("Admin successfully deleted.", HttpStatus.OK);
     }
+
+
+
 }

@@ -47,7 +47,7 @@ public class HotelController {
         }
     }
 
-    @GetMapping("/findByStateAndCity/{state}/{city}")
+    @GetMapping("findByStateAndCity/{state}/{city}")
     public ResponseEntity<?> findHotelsByStateAndCity(@PathVariable String state, @PathVariable String city) {
         List<Hotel> hotels = service.findHotelsByStateAndCity(state, city);
         if (hotels.isEmpty()) {
@@ -57,7 +57,7 @@ public class HotelController {
         }
     }
 
-    @GetMapping("/findByState/{state}")
+    @GetMapping("findByState/{state}")
     public ResponseEntity<?> findHotelsByState(@PathVariable String state) {
         List<Hotel> hotels = service.findHotelsByState(state);
         if (hotels.isEmpty()) {
@@ -67,7 +67,7 @@ public class HotelController {
         }
     }
 
-    @GetMapping("/findByCity/{city}")
+    @GetMapping("findByCity/{city}")
     public ResponseEntity<?> findHotelsByCity(@PathVariable String city) {
         List<Hotel> hotels = service.findHotelsByCity(city);
         if (hotels.isEmpty()) {
