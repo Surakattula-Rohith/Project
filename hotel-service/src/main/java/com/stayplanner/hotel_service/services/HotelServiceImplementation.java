@@ -170,4 +170,15 @@ public class HotelServiceImplementation implements HotelServiceDAO{
         return repo.save(hotel);
     }
 
+    @Override
+    public Hotel findByHotelId(int hotelId) {
+        return repo.findByHotelId(hotelId);
+    }
+
+    @Override
+    public List<Hotel> findByHotelName(String hotelName) {
+        return repo.findByHotelName(hotelName);
+    }
+
+
 }

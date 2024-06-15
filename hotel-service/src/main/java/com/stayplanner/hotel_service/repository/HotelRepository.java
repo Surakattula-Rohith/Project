@@ -20,4 +20,9 @@ public interface HotelRepository extends JpaRepository<Hotel,Integer> {
     List<Hotel> findBySingleRoomsGreaterThan(int number);
     List<Hotel> findByDoubleRoomsGreaterThan(int number);
     List<Hotel> findByTripleRoomsGreaterThan(int number);
+
+    Hotel findByHotelId(int hotelId);
+
+    List<Hotel> findByHotelName(String hotelName);
+
 }

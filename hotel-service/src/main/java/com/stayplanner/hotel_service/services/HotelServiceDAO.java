@@ -25,5 +25,9 @@ public interface HotelServiceDAO {
     Hotel reduceDoubleRoomByOne(int hotelId) throws HotelNotFoundException;
     Hotel toggleAdminAccess(int hotelId) throws HotelNotFoundException ;
     Hotel reduceTripleRoomByOne(int hotelId) throws HotelNotFoundException;
+
+    Hotel findByHotelId(int hotelId);
+
+    List<Hotel> findByHotelName(String hotelName);
 }
 

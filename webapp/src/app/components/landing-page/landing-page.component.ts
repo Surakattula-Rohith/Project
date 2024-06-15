@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { CustomerHomepageComponent } from '../customer-homepage/customer-homepage.component';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
+import { CustomerHomepageComponent } from '../customer/customer-homepage/customer-homepage.component';
 
 @Component({
   selector: 'app-landing-page',

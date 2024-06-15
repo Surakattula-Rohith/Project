@@ -188,4 +188,23 @@ public class HotelController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("findById/{hotelId}")
+    public ResponseEntity<Hotel> findByHotelId(@PathVariable int hotelId) {
+        Hotel hotel = service.findByHotelId(hotelId);
+        if (hotel == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(hotel, HttpStatus.OK);
+    }
+
+    @GetMapping("findByName/{hotelName}")
+    public ResponseEntity<List<Hotel>> findByHotelName(@PathVariable String hotelName) {
+        List<Hotel> hotels = service.findByHotelName(hotelName);
+        if (hotels.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(hotels, HttpStatus.OK);
+    }
+
 }
