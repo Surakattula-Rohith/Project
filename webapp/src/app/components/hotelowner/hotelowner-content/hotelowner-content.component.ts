@@ -4,11 +4,12 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { HotelownerHeaderComponent } from '../hotelowner-header/hotelowner-header.component';
 import { HotelownerHomepageComponent } from '../hotelowner-homepage/hotelowner-homepage.component';
 import { HotelownerFooterComponent } from '../hotelowner-footer/hotelowner-footer.component';
+import { HotelownerAddhotelComponent } from '../hotelowner-addhotel/hotelowner-addhotel.component';
 
 @Component({
   selector: 'app-hotelowner-content',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule,HotelownerHeaderComponent,HotelownerHomepageComponent,HotelownerFooterComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule,HotelownerHeaderComponent,HotelownerHomepageComponent,HotelownerFooterComponent,HotelownerAddhotelComponent],
   templateUrl: './hotelowner-content.component.html',
   styleUrl: './hotelowner-content.component.css'
 })

@@ -8,6 +8,8 @@ import { CustomerHeaderComponent } from './components/customer/customer-header/c
 import { CustomerHomepageComponent } from './components/customer/customer-homepage/customer-homepage.component';
 import { AdminContentComponent } from './components/admin/admin-content/admin-content.component';
 import { HotelownerContentComponent } from './components/hotelowner/hotelowner-content/hotelowner-content.component';
+import { HotelownerAddhotelComponent } from './components/hotelowner/hotelowner-addhotel/hotelowner-addhotel.component';
+import { HotelownerHomepageComponent } from './components/hotelowner/hotelowner-homepage/hotelowner-homepage.component';
 
 
 export const routes: Routes = [
@@ -40,14 +42,14 @@ export const routes: Routes = [
         // ]
     },
     {
-        path: 'hotelowner-content', component: HotelownerContentComponent,
-        // children: [
-        //     { path: '', redirectTo: 'customer-homepage', pathMatch: 'full' },
-        //     { path: 'customer-header', component: CustomerHeaderComponent },
-        //     { path: 'customer-footer', component: CustomerFooterComponent },
-        //     { path: 'customer-homepage', component: CustomerHomepageComponent }
-        // ]
-    }
+        path: 'hotelowner-content',
+        component: HotelownerContentComponent,
+        children: [
+          { path: '', redirectTo: 'homepage', pathMatch: 'full' },
+          { path: 'homepage', component: HotelownerHomepageComponent },
+          { path: 'add-hotel', component: HotelownerAddhotelComponent }
+        ]
+      }
 
 
 ];

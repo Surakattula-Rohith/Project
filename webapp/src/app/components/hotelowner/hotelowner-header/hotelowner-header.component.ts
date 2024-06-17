@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hotelowner-header',
@@ -8,5 +9,14 @@ import { Component } from '@angular/core';
   styleUrl: './hotelowner-header.component.css'
 })
 export class HotelownerHeaderComponent {
+  constructor(private router: Router) { }
+
+  navigateToHome() {
+    this.router.navigate(['hotelowner-content/']);
+  }
+
+  navigateToAddHotel() {
+    this.router.navigate(['hotelowner-content/add-hotel']);
+  }
 
 }
